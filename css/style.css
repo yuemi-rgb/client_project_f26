@@ -7,8 +7,8 @@ header > img {
     display: block;
     width: 80px;
     height: auto;
-    margin: 0;
-    padding: 16px 20px;
+    margin: 0 auto;
+    padding: 8px 16px;
 }
 
 /* Main page title */
@@ -40,8 +40,17 @@ body {
     margin: 0;
     background-color: #ffffff;
     color: #00274c;
-    font-family: Arial, sans-serif;
     line-height: 1.6;
+}
+
+/* Body typography */
+body {
+    font-family: "Atkinson Hyperlegible", Arial, sans-serif;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: "Playfair Display", Georgia, serif;
 }
 
 /* Page title */
@@ -49,6 +58,18 @@ header h1 {
     padding: 0 20px;
     margin: 24px 0;
     font-size: 1.8rem;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 600;
 }
 
 /* Main content */
@@ -109,7 +130,7 @@ nav ul {
 nav a {
     display: block;
     color: white;
-    padding: 15px 20px;
+    padding: 12px 16px;
     text-decoration: none;
 }
 
@@ -140,8 +161,141 @@ nav a[aria-current="page"]:focus-visible {
     color: #00274c;
 }
 
-/* Desktop navigation */
+/* Mobile-first grid layout */
+.guidance-grid,
+.program-grid,
+.preparation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Headings and introductory text */
+.guidance-grid > h2,
+.guidance-grid > p,
+.program-grid > h2,
+.program-grid > p,
+.preparation-grid > h2,
+.preparation-grid > p {
+    grid-column: 1 / -1;
+}
+
+/* Content cards */
+.guidance-grid article,
+.program-grid article,
+.preparation-grid article {
+    padding: 20px;
+    background-color: #f4f7fa;
+    border-top: 4px solid #ffcb05;
+    border-radius: 8px;
+}
+
+/* Start and During: Mobile layout */
+.experience-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.experience-layout > h1 {
+    grid-column: 1 / -1;
+}
+
+/* 404 Error Page */
+.error-page {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 48px 20px;
+}
+
+.error-page h1 {
+    font-size: 2.5rem;
+    color: #00274c;
+    margin-bottom: 24px;
+}
+
+.error-page p {
+    max-width: 550px;
+    margin-bottom: 16px;
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 24px;
+    background-color: #00274c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.home-button:hover,
+.home-button:focus-visible {
+    background-color: #ffcb05;
+    color: #00274c;
+}
+
+.home-button:focus-visible {
+    outline: 3px solid #00274c;
+    outline-offset: 3px;
+}
+
+
+/* Interactive Preparation Checklist */
+.preparation-checklist {
+    background-color: #f4f7fa;
+    padding: 24px;
+    border-top: 4px solid #ffcb05;
+    border-radius: 8px;
+}
+
+.checklist-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.checklist-items label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #d6dce2;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.checklist-items input {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    accent-color: #00274c;
+}
+
+.checklist-items label:focus-within {
+    outline: 3px solid #00274c;
+    outline-offset: 2px;
+}
+
+#checklist-progress {
+    font-weight: bold;
+    margin-top: 16px;
+    color: #00274c;
+}
+
+
+
+/* Tablet Layout */
 @media screen and (min-width: 768px) {
+
+    /* Navigation */
     nav ul {
         display: flex;
     }
@@ -151,10 +305,89 @@ nav a[aria-current="page"]:focus-visible {
     }
 
     nav a {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 60px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60px;
+    }
+
+    /* Current page indicator */
+    nav a[aria-current="page"] {
+        border-left: none;
+        border-bottom: 5px solid #ffcb05;
+    }
+
+    /* Homepage: two-column cards */
+    .guidance-grid,
+    .program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Preparation page: two-column articles */
+    .preparation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Larger screen spacing */
+    main {
+        padding: 32px;
+    }
+
+    .guidance-grid article,
+    .program-grid article,
+    .preparation-grid article {
+        padding: 24px;
+    }
+    
+    /* Start and During: Tablet layout */
+    .experience-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 32px;
+    }
+
+    .experience-layout > section:first-of-type {
+        grid-column: 1 / -1;
+    }
+
+    /* challeng checklist */
+    .preparation-checklist {
+    padding: 32px;
 }
+
+.checklist-items {
+    max-width: 760px;
+}
+
+}
+
+/* Desktop Layout */
+@media screen and (min-width: 1024px) {
+
+    /* Homepage: three-column cards */
+    .guidance-grid,
+    .program-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /* Preparation page: keep articles in two columns */
+    .preparation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Featured resources span the full width */
+    .preparation-grid article:last-of-type {
+        grid-column: 1 / -1;
+    }
+
+    /* More breathing room on desktop */
+    main {
+        padding: 40px;
+    }
+
+    /* Start and During: Desktop spacing */
+    .experience-layout {
+        column-gap: 48px;
+    }
+
 }

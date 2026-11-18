@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engaged Learning Resources | UMSI</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -47,7 +51,7 @@
     </ul>
 </section>
 
- <section>
+<section class="guidance-grid">
     <h2>Guidance for Every Stage</h2>
     <p>Engaged learning projects can change as new needs, constraints, and insights emerge. Find guidance for the stage of work you are navigating <strong>now.</strong></p>
     <article>
@@ -69,7 +73,7 @@
     </article>
   </section>
 
-   <section>
+   <section class="program-grid">
     <h2>Featured Programs</h2>
     <p>Explore opportunities to collaborate with organizations, communities, student teams, and partners in Michigan and beyond.</p>
     <article>
@@ -125,7 +129,13 @@
       <address>
         <a href="mailto:umsi.engagement@umich.edu">umsi.engagement@umich.edu</a>
       </address>
-      <p>&copy; 2026 Regents of the University of Michigan</p>
+      <p>&copy; <span id="current-year">2026</span> Regents of the University of Michigan</p>
     </footer>
+    
+    <script>
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+    </script>
 </body>
 </html>
+

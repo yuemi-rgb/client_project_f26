@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preparing Your Experience | UMSI</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -29,6 +33,45 @@
   <p>Transform your academic knowledge into real-world impact. Use this guide to understand your project context, evaluate team readiness, establish expectations, and begin a productive partnership.</p>
 </section>
 
+<section class="preparation-checklist">
+    <h2>Before You Begin: Preparation Checklist</h2>
+    <p>
+        Check off each step as you prepare for your
+        engaged learning experience.
+    </p>
+
+    <div class="checklist-items">
+        <label>
+            <input type="checkbox">
+            Reflect on your assumptions and learning goals
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Research your community partner
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Discuss team roles and responsibilities
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Prepare questions for your first meeting
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Review project expectations and scope
+        </label>
+    </div>
+
+    <p id="checklist-progress" aria-live="polite">
+        0 / 5 completed
+    </p>
+</section>
+
 <section>
   <h2>Why the Work Starts Before the Project</h2>
   <p>Engaged learning at UMSI is fundamentally different from traditional classroom assignments. You are stepping out of controlled environments and into complex, unscripted ecosystems where technical solutions intersect with human lives, organizational cultures, and real community needs.</p>
@@ -38,8 +81,8 @@
 
 </section>
 
-<section>
-  <h2>Phase 1: Preparing for the Experience</h2>
+<section class="preparation-grid">
+    <h2>Phase 1: Preparing for the Experience</h2>
   <p>Before creating a solution, take time to understand the context, evaluate your team's readiness, and identify what you still need to learn.</p>
   <article>
     <h3>Approach the Work as a Collaborative Learner</h3>
@@ -104,9 +147,42 @@
       <address>
         <a href="mailto:umsi.engagement@umich.edu">umsi.engagement@umich.edu</a>
       </address>
-      <p>&copy; 2026 Regents of the University of Michigan</p>
+      <p>&copy; <span id="current-year">2026</span> Regents of the University of Michigan</p>
     </footer>
     
-</body>
+    
+<script>
+    // Update footer year
+    document.getElementById("current-year").textContent =
+        new Date().getFullYear();
 
+    // Find all checkboxes in the preparation checklist
+    const checkboxes = document.querySelectorAll(
+        ".checklist-items input"
+    );
+
+    // Find the progress text
+    const progress = document.getElementById("checklist-progress");
+
+    // Update the number of completed tasks
+    function updateProgress() {
+        let completed = 0;
+
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                completed++;
+            }
+        });
+
+        progress.textContent =
+            completed + " / " + checkboxes.length + " completed";
+    }
+
+    // Run the function whenever a checkbox changes
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener("change", updateProgress);
+    });
+</script>
+
+</body>
 </html>
